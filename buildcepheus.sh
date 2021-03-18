@@ -1,5 +1,6 @@
 #!/bin/bash
 rm .version
+rm -r out
 
 clear
 
@@ -7,6 +8,8 @@ clear
 THREAD="-j8"
 KERNEL="Image"
 DTBIMAGE="dtb"
+
+mkdir out
 
 export CLANG_PATH=${PWD}/toolchains/Clang-11/bin/
 export PATH=${CLANG_PATH}:${PATH}
