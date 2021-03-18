@@ -1,0 +1,31 @@
+https://github.com/MiCode/Xiaomi_Kernel_OpenSource.git
+
+
+
+
+
+
+Para msm-4.14 como Mi 9
+
+o dtc deve ser do código-fonte dosp, pie-release e clang do qcom
+
+$ git clone https://github.com/MiCode/Xiaomi_Kernel_OpenSource.git -b cepheus-q-oss pixon
+$ cd pixon
+$ git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 toolchain
+Você deve obter o llvm clang do qcom. link: https://developer.qualcomm.com/download/sdllvm/snapdragon-llvm-compiler-android-linux64-609.tar.gz
+
+$ tar vxzf snapdragon-llvm-compiler-android-linux64-609.tar.gz
+
+mkdir out
+export ARCH=arm64
+export SUBARCH=arm64
+export DTC_EXT=dtc
+export CROSS_COMPILE=${PWD}/toolchain/bin/aarch64-linux-android-
+Set CONFIG_BUILD_ARM64_DT_OVERLAY=y
+
+make O=out REAL_CC=${PWD}/toolchains/llvm-Snapdragon_LLVM_for_Android_6.0/prebuilt/linux-x86_64/bin/clang CLANG_TRIPLE=aarch64-linux-gnu- cepheus_user_defconfig
+make -j$(nproc) O=out REAL_CC=${PWD}/toolchains/llvm-Snapdragon_LLVM_for_Android_6.0/prebuilt/linux-x86_64/bin/clang CLANG_TRIPLE=aarch64-linux-gnu- 2>&1 | tee kernel.log
+
+
+
+https://github.com/MiCode/Xiaomi_Kernel_OpenSource/wiki/How-to-compile-kernel-standalone

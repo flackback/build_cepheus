@@ -1,0 +1,32 @@
+rm -rf out
+mkdir out
+export ARCH=arm64
+export SUBARCH=arm64
+export DTC_EXT=dtc
+
+make O=out ARCH=arm64 cepheus_user_defconfig
+
+PATH="${PWD}/bin:${PWD}/toolchains/llvm-Snapdragon_LLVM_for_Android_8.0/prebuilt/linux-x86_64/bin:${PATH}" \
+make -j$(nproc --all) O=out \
+                      ARCH=arm64 \
+                      CC=clang \
+                      CROSS_COMPILE=aarch64-linux-android- | tee kernel.log
+
+
+
+cd raphael-p-oss
+rm -rf out
+mkdir out
+export ARCH=arm64
+export SUBARCH=arm64
+export DTC_EXT=dtc
+
+make O=out ARCH=arm64 cepheus_user_defconfig
+
+PATH="${PWD}/bin:${PWD}/toolchains/llvm-Snapdragon_LLVM_for_Android_8.0/prebuilt/linux-x86_64/bin/:${PATH}" \
+make -j$(nproc --all) O=out \
+                      ARCH=arm64 \
+                      CC=clang \
+                      CLANG_TRIPLE=aarch64-linux-gnu- \
+                      CROSS_COMPILE=aarch64-linux-android- | tee kernel.log
+
