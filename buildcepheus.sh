@@ -11,7 +11,7 @@ DTBIMAGE="dtb"
 
 mkdir out
 
-export CLANG_PATH=${PWD}/toolchains/Clang-11/bin/
+export CLANG_PATH=${PWD}/toolchains/proton-clang/bin/
 export PATH=${CLANG_PATH}:${PATH}
 export CLANG_TRIPLE=aarch64-linux-gnu-
 export CROSS_COMPILE=${PWD}/toolchains/aarch64-linux-android-4.9/bin//aarch64-linux-android- CC=clang CXX=clang++
