@@ -11,10 +11,10 @@ DTBIMAGE="dtb"
 
 mkdir out
 
-export CLANG_PATH=${PWD}/toolchains/proton-clang/bin/
+export CLANG_PATH=${PWD}/toolchains/llvm-Snapdragon_LLVM_for_Android_8.0/prebuilt/linux-x86_64/bin/clang/bin/
 export PATH=${CLANG_PATH}:${PATH}
 export CLANG_TRIPLE=aarch64-linux-gnu-
-export CROSS_COMPILE=${PWD}/toolchains/aarch64-linux-android-4.9/bin//aarch64-linux-android- CC=clang CXX=clang++
+export CROSS_COMPILE=${PWD}/toolchain/bin/aarch64-linux-android-- CC=clang CXX=clang++
 export CXXFLAGS="$CXXFLAGS -fPIC"
 export DTC_EXT=dtc
 
