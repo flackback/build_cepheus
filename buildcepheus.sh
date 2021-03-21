@@ -1,6 +1,13 @@
 #!/bin/bash
 rm .version
+
+make clean
+make mrproper
+rm -r toolchain
+rm -r toolchains
 rm -r out
+git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 toolchain
+tar vxzf snapdragon-llvm-8.0.6-linux64.tar.gz
 
 clear
 
